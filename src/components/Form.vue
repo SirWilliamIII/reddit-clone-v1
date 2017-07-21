@@ -1,29 +1,33 @@
 <template>
-    <div class="form">
-        <form>
+    <div>
+        <form class="form">
             <div class="form-group row">
-                <label for="nameInput" class="col-xs-1 col-form-label">{{name}}</label>
-                <div class="col-sm-6 offset-sm-3" id="iname">
-                    <input class="form-control" id="nameInput" placeholder="your name">
+                <div class="col-sm-6 offset-sm-3 col-xl-6 offset-xl-3">
+                    <label for="name" class="col-sm-1 col-form-label col-xl-1">Name: </label>
+                    <input v-model="post.name" class="form-control" id="name" placeholder="">
                 </div>
             </div>
             <div class="form-group row">
-                <label for="categoryInput" class="col-xs-1 col-form-label">{{ category }}</label>
-                <div class="col-sm-6 offset-sm-2" id="icategory">
-                    <input class="form-control" id="categoryInput" placeholder="category">
+                <div class="col-sm-6 offset-sm-3 col-xl-6 offset-xl-3" id="">
+                    <label for="categoryInput" class="col-xs-1 col-form-label">Category: </label> <input
+                    v-model="post.category"
+                    class="form-control" id="categoryInput" placeholder="">
                 </div>
             </div>
             <div class="form-group row">
-                <label>{{ postArea }}</label>
                 <div class="col-sm-6">
                     <div>
-                        <textarea name="post" id="" cols="51" rows="6" id="postArea"></textarea>
+                        <label>{{ postArea }}</label>
+                        <textarea v-model="post.description" name="post" cols="50" rows="6" id="postArea"></textarea>
                     </div>
                 </div>
             </div>
+
+
             <div class="form-group row">
-                <div class="offset-sm-4 col-sm-8">
-                    <button type="submit" class="btn btn-primary" id="submitButton">Publish</button>
+                <div class="col-sm-6 offset-sm-3 col-xl-6 offset-xl-3">
+                    <button @click="publishPost" type="button" class="btn btn-primary" id="submitButton">Publish
+                    </button>
                     <button type="reset" class="btn btn-danger">Clear Text Area</button>
                 </div>
             </div>
@@ -34,36 +38,34 @@
 <script>
     export default {
         name:    'form',
+        props:   ['onAddPost'],
         data() {
             return {
-                message:  '',
-                name:     'Name: ',
-                category: 'Category: ',
-                postArea:     'Write your post here: ',
-                items:    [{}, {}, {}]
+                post: {
+                    name:        '',
+                    category:    '',
+                    description: ''
+                }
             }
         },
         methods: {
-            publishPost: function () {
-                const submitButton = document.getElementById('submitButton')
-                const postArea = document.getElementById('postArea')
-                const nameArea = document.getElementById('nameArea')
-
-                if (postArea.value !== '') {
-
-                }
+            publishPost() {
+                this.onAddPost({
+                    name:        this.post.name,
+                    category:    this.post.category,
+                    description: this.post.description
+                });
+                this.post.name = ''
+                this.post.category = ''
+                this.post.description = ''
             }
         }
     }
 </script>
 
 <style>
-    #icategory {
-            padding-left: 20px;
-    }
-    #iname {
+
+    #name {
         padding-left: 0px;
     }
-
-
 </style>
