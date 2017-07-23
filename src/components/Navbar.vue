@@ -1,14 +1,15 @@
 <template>
-        <nav class="navbar fixed-top bg-info">
+    <nav class="navbar navbar-toggleable-xs bg-info">
+        <div class="container-fluid">
             <div class="row">
-                <a class="navbar-brand" href="#" id="logo"><img src="../assets/logo.png" alt=""></a>
-                <div id="title">
-                    <span class="navbar-text center-block" style="color: white">
-                        <h1>{{ title }}</h1>
-                    </span>
-                </div>
+                <a class="navbar-brand" href="#" id="logo"> <img height="48" width="48" src="../assets/logo.png" alt="">
+                </a>
+                <span class="navbar-text center-block" style="color: red">
+                    <h3>{{ title }}</h3>
+                </span>
             </div>
-        </nav>
+        </div>
+    </nav>
 </template>
 
 <script>
@@ -25,12 +26,11 @@
 
 <style>
     #title {
-        margin: auto;
         font-family: 'Avenir', Helvetica, Arial, sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         text-align: center;
-        color: #aaa;
+        color: #333;
     }
 
     #logo {

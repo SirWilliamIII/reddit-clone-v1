@@ -1,10 +1,9 @@
 <template>
     <div id="app">
-        <div id="wrapper" class="container">
+        <div id="wrapper" class="container-fluid">
             <Navbar/>
-            <br><br><br><br><br>
-            <main class="container">
-                <FormPosts></FormPosts>
+            <main>
+                <FormPosts/>
             </main>
         </div>
     </div>
